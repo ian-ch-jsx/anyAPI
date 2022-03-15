@@ -13,8 +13,11 @@ describe('anyAPI routes', () => {
   });
 
   it('gets a list of monsters', async () => {
-    const expected = [{ id: 1, species: 'werewolf', type: 'animal' }];
-    const res = await request(app).post('/api/v1/monsters').send(expected);
+    const expected = [
+      { id: '1', species: 'werewolf', category: 'animal' },
+      { id: '2', species: 'vampire', category: 'humanoid' },
+    ];
+    const res = await request(app).get('/api/v1/monsters').send(expected);
 
     expect(res.body).toEqual(expected);
   });
