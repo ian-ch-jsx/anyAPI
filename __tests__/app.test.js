@@ -21,4 +21,14 @@ describe('anyAPI routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('creates a monster', async () => {
+    const expected = {
+      species: 'zombie',
+      category: 'humanoid',
+    };
+    const res = await request(app).post('/api/v1/monsters').send(expected);
+
+    expect(res.body).toEqual({ id: expect.any(String), ...expected });
+  });
 });
