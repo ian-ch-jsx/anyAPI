@@ -39,4 +39,17 @@ describe('anyAPI routes', () => {
 
     expect(res.body).toEqual({ ...expected });
   });
+
+  it('updates a monster by id', async () => {
+    const expected = {
+      id: expect.any(String),
+      species: 'werewolf',
+      category: 'undead',
+    };
+    const res = await request(app)
+      .patch('/api/v1/monsters/1')
+      .send({ category: 'undead' });
+
+    expect(res.body).toEqual(expected);
+  });
 });
